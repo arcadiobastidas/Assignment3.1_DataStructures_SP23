@@ -8,9 +8,9 @@ using namespace std;
 int main()
 {
     //tested term class
-    // Term myTest;
-    // cin >> myTest;
-    // cout << myTest;
+     Term myTest;
+     cin >> myTest;
+     cout << myTest;
 
 
 

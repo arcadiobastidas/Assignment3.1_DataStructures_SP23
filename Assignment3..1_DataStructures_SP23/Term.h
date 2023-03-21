@@ -28,5 +28,18 @@ public:
     friend istream &operator >> (istream& in, Term &obj);
     friend ostream &operator << (ostream& out, const Term &obj);
 
+    //overloading binary operators
+
+    Term operator+=(const Term&obj)
+    {
+        //I don't know if this is right;
+        Term temp;
+        temp.coef=+ obj.coef;
+        temp.exp=+ obj.coef;
+
+        return temp;
+        
+        
+    }
     
 };
