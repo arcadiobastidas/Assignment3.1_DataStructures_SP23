@@ -32,7 +32,7 @@ void addTerm(const Term& term);
     Polynomial operator+(const Polynomial& other) const ;
     bool operator==(const Polynomial& other) const;
 
-    ArrayBag<Term>  getPoly();
+    ArrayBag<Term> getPoly();
 
     friend ostream& operator <<(ostream& out, const Polynomial& obj);
 

@@ -8,8 +8,8 @@ Polynomial::Polynomial()
 Polynomial::Polynomial(ArrayBag<Term> aPoly)
 {
     
-    for(int i = 0; i < poly.getCurrentSize(); i++)
-    poly.add(addTerm(temp));
+    // for(int i = 0; i < poly.getCurrentSize(); i++)
+    // poly.add();
 }
 
 Polynomial::~Polynomial()
@@ -84,10 +84,9 @@ bool Polynomial::operator==(const Polynomial& obj) const {
 }
 
 ArrayBag<Term> Polynomial::getPoly()
-{
-   
+{   
         return poly;
-    
+  
 }
 
 void Polynomial::addTerm(const Term& term) {
