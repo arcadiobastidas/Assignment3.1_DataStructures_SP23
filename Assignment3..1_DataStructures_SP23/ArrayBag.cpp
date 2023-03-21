@@ -1,28 +1,29 @@
 ﻿#include "ArrayBag.h"
-template<class ItemType>
+
+template <class ItemType>
 ArrayBag<ItemType>::ArrayBag() : itemCount(0), maxItems(DEFAULT_CAPACITY)
 {
 } // end default constructor
-template<class ItemType>
+template <class ItemType>
 int ArrayBag<ItemType>::getCurrentSize() const
 {
-return itemCount;
+    return itemCount;
 } // end getCurrentSize
-template<class ItemType>
+template <class ItemType>
 bool ArrayBag<ItemType>::isEmpty() const
 {
-return itemCount == 0;
+    return itemCount == 0;
 } // end isEmpty
-template<class ItemType>
+template <class ItemType>
 bool ArrayBag<ItemType>::add(const ItemType& newEntry)
 {
-bool hasRoomToAdd = (itemCount < maxItems);
-if (hasRoomToAdd)
-{
-items[itemCount] = newEntry;
-itemCount++;
-} // end if
-return hasRoomToAdd;
+    bool hasRoomToAdd = (itemCount < maxItems);
+    if (hasRoomToAdd)
+    {
+        items[itemCount] = newEntry;
+        itemCount++;
+    } // end if
+    return hasRoomToAdd;
 } // end add
 /*
 // STUB
@@ -32,17 +33,17 @@ bool ArrayBag<ItemType>::remove(const ItemType& anEntry)
 return false; // STUB
 } // end remove
 */
-template<class ItemType>
+template <class ItemType>
 bool ArrayBag<ItemType>::remove(const ItemType& anEntry)
 {
-int locatedIndex = getIndexOf(anEntry);
-bool canRemoveItem = !isEmpty() && (locatedIndex > -1);
-if (canRemoveItem)
-{
-itemCount--;
-items[locatedIndex] = items[itemCount];
-} // end if
-return canRemoveItem;
+    int locatedIndex = getIndexOf(anEntry);
+    bool canRemoveItem = !isEmpty() && (locatedIndex > -1);
+    if (canRemoveItem)
+    {
+        itemCount--;
+        items[locatedIndex] = items[itemCount];
+    } // end if
+    return canRemoveItem;
 } // end remove
 /*
 // STUB
@@ -52,30 +53,30 @@ void ArrayBag<ItemType>::clear()
 // STUB
 } // end clear
 */
-template<class ItemType>
+template <class ItemType>
 void ArrayBag<ItemType>::clear()
 {
-itemCount = 0;
+    itemCount = 0;
 } // end clear
-template<class ItemType>
+template <class ItemType>
 int ArrayBag<ItemType>::getFrequencyOf(const ItemType& anEntry)
 {
-int frequency = 0;
-int curIndex = 0; // Current array index
-while (curIndex < itemCount)
-{
-if (items[curIndex] == anEntry)
-{
-frequency++;
-} // end if
-curIndex++; // Increment to next entry
-} // end while
-return frequency;
+    int frequency = 0;
+    int curIndex = 0; // Current array index
+    while (curIndex < itemCount)
+    {
+        if (items[curIndex] == anEntry)
+        {
+            frequency++;
+        } // end if
+        curIndex++; // Increment to next entry
+    } // end while
+    return frequency;
 } // end getFrequencyOf
-template<class ItemType>
+template <class ItemType>
 bool ArrayBag<ItemType>::contains(const ItemType& anEntry)
 {
-return getIndexOf(anEntry) > -1;
+    return getIndexOf(anEntry) > -1;
 } // end contains
 /* ALTERNATE 1: First version
 template<class ItemType>
@@ -100,45 +101,47 @@ curIndex++; // Increment to next entry
 return found;
 } // end contains
 */
-template<class ItemType>
+template <class ItemType>
 vector<ItemType> ArrayBag<ItemType>::toVector() const
 {
-vector<ItemType> bagContents;
-for (int i = 0; i < itemCount; i++)
-bagContents.push_back(items[i]);
-return bagContents;
+    vector<ItemType> bagContents;
+    for (int i = 0; i < itemCount; i++)
+        bagContents.push_back(items[i]);
+    return bagContents;
 } // end toVector
 // private
-template<class ItemType>
+template <class ItemType>
 int ArrayBag<ItemType>::getIndexOf(const ItemType& target)
 {
-bool found = false;
-int result = -1;
-int searchIndex = 0;
-// If the bag is empty, itemCount is zero, so loop is skipped
-while (!found && (searchIndex < itemCount))
-{
-if (items[searchIndex] == target)
-{
-found = true;
-result = searchIndex;
-}
-else
-{
-searchIndex++;
-} // end if
-} // end while
-return result;
+    bool found = false;
+    int result = -1;
+    int searchIndex = 0;
+    // If the bag is empty, itemCount is zero, so loop is skipped
+    while (!found && (searchIndex < itemCount))
+    {
+        if (items[searchIndex] == target)
+        {
+            found = true;
+            result = searchIndex;
+        }
+        else
+        {
+            searchIndex++;
+        } // end if
+    } // end while
+    return result;
 } // end getIndexOf
-template<class ItemType>
+template <class ItemType>
 void ArrayBag<ItemType>::display() const
 {
-for(int count = 0; count < getCurrentSize(); count++ ){
-cout << items[count] << ",";
-}//end for
-cout << endl;
+    for (int count = 0; count < getCurrentSize(); count++)
+    {
+        cout << items[count] << ",";
+    } //end for
+    cout << endl;
 } //end display
-template<class ItemType>
-ItemType ArrayBag<ItemType>::getElement(int index) const {
-return items[index];
+template <class ItemType>
+ItemType ArrayBag<ItemType>::getElement(int index) const
+{
+    return items[index];
 }

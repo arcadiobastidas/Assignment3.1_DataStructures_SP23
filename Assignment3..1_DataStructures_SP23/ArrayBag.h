@@ -2,9 +2,10 @@
 #define _ARRAY_BAG
 #include <iostream>
 #include "BagInterface.h"
-using namespace  std;
+using namespace std;
 
-template<class ItemType>
+
+template <class ItemType>
 class ArrayBag : public BagInterface<ItemType>
 {
 private:
@@ -16,19 +17,20 @@ private:
     // Returns either the index of the element in the array items that
     // contains the given target or -1, if the array does not contain
     // the target.
-    int getIndexOf(const ItemType& target) ;
+    int getIndexOf(const ItemType& target);
+
 public:
     ArrayBag();
-    int getCurrentSize() const;
-    bool isEmpty() const;
-    bool add(const ItemType& newEntry);
-    bool remove(const ItemType& anEntry);
-    void clear();
-    bool contains(const ItemType& anEntry) ;
-    int getFrequencyOf(const ItemType& anEntry);
-    vector<ItemType> toVector() const;
-    void display() const;
-    ItemType getElement(int index) const;
+    int getCurrentSize() const override;
+    bool isEmpty() const override;
+    bool add(const ItemType& newEntry) override;
+    bool remove(const ItemType& anEntry) override;
+    void clear() override;
+    bool contains(const ItemType& anEntry) override;
+    int getFrequencyOf(const ItemType& anEntry) override;
+    vector<ItemType> toVector() const override;
+    void display() const override;
+    ItemType getElement(int index) const override;
 }; // end ArrayBag
 
 #endif
