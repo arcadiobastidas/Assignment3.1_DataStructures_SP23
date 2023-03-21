@@ -11,13 +11,13 @@ For this problem, consider only polynomials whose exponents are nonnegative inte
 p = 4 x5 + 7 x 3 – x2 + 9
 The following examples demonstrate the ADT operations on this polynomial.
 p.degree() is 5 (the highest power of a term with a nonzero coeffi cient)
-p.coefficient(3) is 7 (the coeffi cient of the x3 term)
-p.coefficient(4) is 0 (the coeffi cient of a missing term is implicitly 0)
+p.coefficient(3) is 7 (the coefficient of the x3 term)
+p.coefficient(4) is 0 (the coefficient of a missing term is implicitly 0)
 p.changeCoefficient(-3, 7) changes the polynomial p to –3 x7 + 4 x5 + 7 x3 – x2 + 9
 
 Using these ADT operations, write statements to perform the following tasks:
-a. Display the coeffi cient of the term that has the highest power.
-b. Increase the coeffi cient of the x3 term by 8.
+a. Display the coefficient of the term that has the highest power.
+b. Increase the coefficient of the x3 term by 8.
 c. Compute the sum of two polynomials.
 
 
