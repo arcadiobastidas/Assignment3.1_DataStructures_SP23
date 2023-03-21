@@ -1,0 +1,52 @@
+﻿Parte 1;
+
+Consider the ADT polynomial—in a single variable x —whose operations include the following:
+degree() // Returns the degree of a polynomial.
+coefficient(power) // Returns the coeffi cient of the xpower term.
+changeCoefficient(newCoefficient, power) // Replaces the coefficient of
+// the xpower term with newCoefficient.
+
+
+For this problem, consider only polynomials whose exponents are nonnegative integers. For example,
+p = 4 x5 + 7 x 3 – x2 + 9
+The following examples demonstrate the ADT operations on this polynomial.
+p.degree() is 5 (the highest power of a term with a nonzero coeffi cient)
+p.coefficient(3) is 7 (the coeffi cient of the x3 term)
+p.coefficient(4) is 0 (the coeffi cient of a missing term is implicitly 0)
+p.changeCoefficient(-3, 7) changes the polynomial p to –3 x7 + 4 x5 + 7 x3 – x2 + 9
+
+Using these ADT operations, write statements to perform the following tasks:
+a. Display the coeffi cient of the term that has the highest power.
+b. Increase the coeffi cient of the x3 term by 8.
+c. Compute the sum of two polynomials.
+
+
+Parte 2
+
+Analyze the following problem:
+Carrano 2013, Chapter 3, Programming Problems, Problem 8, p. 114.
+
+ 
+
+Implement the ADT polynomial that Exercise 9 in Chapter 1 describes by using an ArrayBag.
+
+ 
+
+Define a class named Term that has two attributes:
+    coef: Hold the coefficient int data type of the term.
+    exp: Hold the exponent int data type of the term.
+    Overload the Stream Extraction/ Insertion) operators ( >>,<<).
+    Overload the binary operator (+=) that sums two terms.
+ 
+
+Define a class named Polynomial that has one attribute:
+    poly: Hold the polynomial of ArrayBag data type.
+    Overload the binary operator ( + ) to Compute the sum of two polynomials.
+    Perform the rest of the operations described in the problem.
+    
+The solution must contain the following:
+C ++ Code.
+Program output. 
+Use polynomials with a minimum of five terms to show the operations.
+ 
+

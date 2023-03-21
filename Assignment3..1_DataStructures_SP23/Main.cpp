@@ -12,21 +12,17 @@ int main()
 {
     Term myTerm(1,5);
 
-    Term myTerm2(-2,5);
+    //Term myTerm2(-2,5);
 
-    Polynomial myPoly;
-    myPoly.addTerm(myTerm);
-    myPoly.addTerm(myTerm2);
-
-  cout << myPoly;
-   
-
+   // cout << myTerm << myTerm2;
 
    
-    //myPolynomial.addTerm(myTerm);
+    Polynomial poly;
 
-    //cout << myPolynomial.degree();
+    poly.addTerm(myTerm);
 
-  // cout << myPolynomial.coefficient(2);
+    cout << poly.degree();
+
+  cout<< poly.coefficient(5);
     return 0;
 }

@@ -34,7 +34,6 @@ public:
 
     Term& operator+=(const Term& obj);
     bool operator==(const Term& other) const;
-
     Term operator+(const Term& obj) const;
 };
 #endif
