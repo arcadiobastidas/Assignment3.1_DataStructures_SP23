@@ -1,5 +1,7 @@
 ﻿#include "Polynomial.h"
 
+#include <ppltasks.h>
+
 /*                   Constructors                                     */
 Polynomial::Polynomial()
 {
@@ -102,7 +104,39 @@ void Polynomial::addTerm(const Term& obj) {
 /*                   OperatorOverload                                     */
 Polynomial Polynomial::operator+(const Polynomial& obj) const
 {
+
     Polynomial result;
+    Term temp1;
+    Term temp2;
+
+    int thatExp;
+    int thatCoef;
+    int thisExp;
+
+    int thisCoef;
+    int finalCoef;
+    int size = obj.poly.getCurrentSize();
+    
+    for(int i = 0; i < size; i++)
+    {
+        
+        thatExp = obj.poly.getElement(i).getExp();
+        thisExp = poly.getElement(i).getExp();
+        thatCoef = obj.poly.getElement(i).getCoef();
+        thisCoef = poly.getElement(i).getCoef();
+        if(thisExp == thatExp)
+        {
+            finalCoef = thisCoef + thatCoef;
+            Term temp(finalCoef,thatExp);
+            result.addTerm(temp);
+        } else
+        {
+            cout<< "Objects can't be added!" << endl;
+            Term temp2(thatCoef, thatExp);
+            result.addTerm(temp2);
+        }
+            
+    }
 
   return result;
 }
