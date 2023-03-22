@@ -24,7 +24,7 @@ public:
 
 
     //helper methods
-    void addTerm(const Term& term); // add a term to the list
+    void addTerm(const Term& obj); // add a term to the list
     
     //Operator Overloads
     Polynomial operator+(const Polynomial& other) const; //add terms

@@ -15,6 +15,8 @@ Term::Term(int aCoef, int anExp)
 Term::Term(const Term& obj)
 {
  //test
+    this-> coef = obj.getCoef();
+    this->exp = obj.getExp();
 }
 
 void Term::setCoef(int aCoef)
@@ -80,8 +82,8 @@ istream& operator>>(istream& in, Term& obj)
 }
 
 ostream& operator<<(ostream& out, const Term& obj)
-{
-    cout << "Test Printing term class" << endl;
-    out << obj.getCoef() << "x^" << obj.getExp();
-    return out;
+    {
+    
+      out << obj.getCoef() << "x^" << obj.getExp() << " ";
+   return out;
 }

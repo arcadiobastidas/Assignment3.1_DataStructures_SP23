@@ -4,14 +4,12 @@
 Polynomial::Polynomial()
 {
     //initializes array to 0
-    
 }
 
 
 Polynomial::~Polynomial()
 {
     //destructor
-    
 }
 
 Polynomial::Polynomial(const Polynomial& obj)
@@ -47,72 +45,70 @@ int Polynomial::coefficient(int power) const
 /*                         Helper Method                                     */
 void Polynomial::changeCoefficient(int newCoefficient, int power)
 {
-      for (int i = 0; i < poly.getCurrentSize(); i++) {
-            if (poly.getElement(i).getExp() == power) {
+      for (int i = 0; i < poly.getCurrentSize(); i++)
+      {
+            if (poly.getElement(i).getExp() == power)
+            {
                 poly.getElement(i).setCoef(newCoefficient);
-                return;
             }
-        }
+      }
         // If the power is not found, add a new term to the polynomial with the specified coefficient and power
         Term newTerm(newCoefficient, power);
         poly.add(newTerm);
     
 }
 
-void Polynomial::addTerm(const Term& term) {
-    if (term.getCoef() == 0) {
-        // don't add terms with zero coefficients
-        return;
-    }
-    if (poly.contains(term))
-    {
-        // if the term already exists, add the coefficients
-        for(int i = 0; poly.getCurrentSize(); i++){
-            Term temp = poly.getElement(i);
-            int newCoef = temp.getCoef() + term.getCoef();
-            if (newCoef == 0) {
-                // if the sum of coefficients is zero, remove the old term
-                poly.remove(temp);
-            } else {
-                // otherwise, replace the old term with the new term
-                Term newTerm(newCoef, term.getExp());
-                poly.remove(temp);
-                poly.add(temp);
-                
+void Polynomial::addTerm(const Term& obj) {
+
+    // if (obj.poly.getElement(i). == 0) {
+    //     // don't add terms with zero coefficients
+    //     return;
+    // }
+    Term term = obj;
+        if (poly.contains(term))
+        {
+            // if the term already exists, add the coefficients
+            for(int i = 0; i < poly.getCurrentSize(); i++)
+            {
+                Term temp = poly.getElement(i);
+                if (temp.getExp() == term.getExp())
+                {
+                    int newCoef = temp.getCoef() + term.getCoef();
+                    if (newCoef == 0)
+                    {
+                        // if the sum of coefficients is zero, remove the old term
+                        poly.remove(temp);
+                    } else {
+                        // otherwise, replace the old term with the new term
+                        Term newTerm(newCoef, term.getExp());
+                        poly.remove(temp);
+                        poly.add(newTerm);
+                    }
+                    // we found the matching term, so we can exit the loop
+                    return;
+                }
             }
         }
-    }
-    else
-            
-                       
-        // otherwise, just add the new term
+        // if we reach here, the term was not found in the polynomial
         poly.add(term);
-        
+    }
+
+    
+
     
   
-}
+
 
 /*                   OperatorOverload                                     */
 Polynomial Polynomial::operator+(const Polynomial& obj) const
 {
-        // Create a new polynomial to store the result
-        Polynomial result;
+    Polynomial result;
 
-        // Loop over the terms in the first polynomial and add them to the result
-        for (int i = 0; i < poly.getCurrentSize(); i++) {
-            result.poly.add(poly.getElement(i));
-        }
-
-        // Loop over the terms in the second polynomial and add them to the result
-        for (int i = 0; i < obj.poly.getCurrentSize(); i++) {
-            result.poly.add(obj.poly.getElement(i));
-        }
-
-        // Return the new polynomial
-        return result;
-    
-
+  return result;
 }
+
+
+
 
 bool Polynomial::operator==(const Polynomial& obj) const {
     if (poly.getCurrentSize() != obj.poly.getCurrentSize()) {
@@ -125,8 +121,8 @@ bool Polynomial::operator==(const Polynomial& obj) const {
 ostream& operator<<(ostream& out, const Polynomial& obj)
 {
     
-    cout << "Test Printing term class" << endl;
-    cout <<obj.degree();
+
+       obj.poly.display();
     
     return out;
 }
