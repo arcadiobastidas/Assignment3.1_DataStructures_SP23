@@ -136,9 +136,12 @@ void ArrayBag<ItemType>::display() const
 {
     for (int count = 0; count < getCurrentSize(); count++)
     {
-       
-            cout << items[count] << ",";
-     
+        if(count < itemCount)
+        {
+            cout << items[count] << " , ";
+        } 
+        
+        
     } //end for
     cout << endl;
 } //end display

@@ -47,16 +47,17 @@ int Polynomial::coefficient(int power) const
 /*                         Helper Method                                     */
 void Polynomial::changeCoefficient(int newCoefficient, int power)
 {
-      for (int i = 0; i < poly.getCurrentSize(); i++)
-      {
-            if (poly.getElement(i).getExp() == power)
-            {
-                poly.getElement(i).setCoef(newCoefficient);
-            }
-      }
-        // If the power is not found, add a new term to the polynomial with the specified coefficient and power
-        Term newTerm(newCoefficient, power);
-        poly.add(newTerm);
+    Term temp(newCoefficient, power);
+    // Check if the power already exists in the polynomial
+    int index = this->poly.contains(temp);
+    if (index != -1) {
+        // Power already exists, so update the coefficient
+        this->poly.getElement(index).setCoef(newCoefficient);
+    } else {
+        // Power doesn't exist, so add the new term to the polynomial
+        poly.add(temp);
+    }
+        
     
 }
 
