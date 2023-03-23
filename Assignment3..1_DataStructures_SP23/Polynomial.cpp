@@ -24,13 +24,12 @@ Polynomial::Polynomial(const Polynomial& obj)
 
 int Polynomial::degree() const
 {
-        int maxExp = 0;
-        for (int i = 0; i < this->poly.getCurrentSize(); i++) {
-              if (this->poly.getElement(i).getExp()> maxExp) {
-                maxExp = this->poly.getElement(i).getExp();
-            }
-        }
-        return maxExp;
+    int max = 0;
+    for(int i = 0;i < poly.getCurrentSize(); i++){
+        if(poly.getElement(i).getExp() > max)
+            max = poly.getElement(i).getExp();
+    }
+    return max;
     
 }
 
@@ -47,15 +46,17 @@ int Polynomial::coefficient(int power) const
 /*                         Helper Method                                     */
 void Polynomial::changeCoefficient(int newCoefficient, int power)
 {
-    Term temp;
-    // Check if the power already exists in the polynomial
-    for(int i = 0; i < poly.getCurrentSize(); i++)
-    {
-        poly.remove(poly.getElement(i));
-        temp.setCoef(newCoefficient);
-        temp.setExp(power);
-        poly.add(temp);
+    
+    for(int i = 0; i < poly.getCurrentSize(); i++){
+        if(poly.getElement(i).getExp() == power){
+            poly.remove(poly.getElement(i));
+            Term temp(newCoefficient, power);
+            poly.add(temp);
+            return;
+        }
     }
+    Term newterm(newCoefficient,power);
+    poly.add(newterm);
         
     
 }
@@ -106,39 +107,29 @@ Polynomial Polynomial::operator+(const Polynomial& obj) const
 {
 
     Polynomial result;
-    Term temp1;
-    Term temp2;
 
-    int thatExp;
-    int thatCoef;
-    int thisExp;
-
-    int thisCoef;
-    int finalCoef;
-    int size = obj.poly.getCurrentSize();
-    
-    for(int i = 0; i < size; i++)
-    {
-        
-        thatExp = obj.poly.getElement(i).getExp();
-        thisExp = poly.getElement(i).getExp();
-        thatCoef = obj.poly.getElement(i).getCoef();
-        thisCoef = poly.getElement(i).getCoef();
-        if(thisExp == thatExp)
-        {
-            finalCoef = thisCoef + thatCoef;
-            Term temp(finalCoef,thatExp);
-            result.addTerm(temp);
-        } else
-        {
-            cout<< "Objects can't be added!" << endl;
-            Term temp2(thatCoef, thatExp);
-            result.addTerm(temp2);
-        }
-            
+    for (int i = 0; i < poly.getCurrentSize(); i++) { 
+        result.poly.add(poly.getElement(i));
     }
 
-  return result;
+    for (int i = 0; i < obj.poly.getCurrentSize(); i++) 
+        {
+        bool found = false; 
+        for (int j = 0; j < result.poly.getCurrentSize(); j++) 
+            {
+            if (result.poly.getElement(j).getExp() == obj.poly.getElement(i).getExp()) 
+                {
+                result.poly.add(result.poly.getElement(j) += obj.poly.getElement(i));
+                result.poly.remove(result.poly.getElement(j));
+                found = true;
+                break;
+                }
+				
+            }
+        if (!found) 
+            result.poly.add(obj.poly.getElement(i));
+        }
+    return result;
 }
 
 
