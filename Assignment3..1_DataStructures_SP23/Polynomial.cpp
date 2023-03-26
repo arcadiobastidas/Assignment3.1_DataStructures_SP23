@@ -1,7 +1,5 @@
 ﻿#include "Polynomial.h"
 
-#include <ppltasks.h>
-
 /*                   Constructors                                     */
 Polynomial::Polynomial()
 {
@@ -105,52 +103,49 @@ void Polynomial::addTerm(const Term& obj) {
 /*                   OperatorOverload                                     */
 Polynomial Polynomial::operator+(const Polynomial& obj) const
 {
-
     Polynomial result;
+    
 
-    for (int i = 0; i < poly.getCurrentSize(); i++) { 
-        result.poly.add(poly.getElement(i));
-    }
-
-    for (int i = 0; i < obj.poly.getCurrentSize(); i++) 
+    for (int i = 0; i < obj.poly.getCurrentSize(); i++)
         {
-        bool found = false; 
-        for (int j = 0; j < result.poly.getCurrentSize(); j++) 
+        bool hasElement = result.poly.contains(obj.poly.getElement(i)); 
+        for (int j = 0; j < obj.poly.getCurrentSize(); j++)  
             {
-            if (result.poly.getElement(j).getExp() == obj.poly.getElement(i).getExp()) 
+            if (result.poly.getElement(j).getExp() == obj.poly.getElement(i).getExp())  
                 {
-                result.poly.add(result.poly.getElement(j) += obj.poly.getElement(i));
+                result.addTerm(result.poly.getElement(j) += obj.poly.getElement(i));
                 result.poly.remove(result.poly.getElement(j));
-                found = true;
-                break;
+                hasElement = true;
+               
                 }
 				
             }
-        if (!found) 
-            result.poly.add(obj.poly.getElement(i));
+        if (!hasElement) // si no se encontro un termino con la misma potencia los añadimos al final
+            result.addTerm(obj.poly.getElement(i));
         }
-    return result;
+    return result; //retornar resultado
 }
 
-
-
-
-bool Polynomial::operator==(const Polynomial& obj) const {
-    if (poly.getCurrentSize() != obj.poly.getCurrentSize()) {
-        return false;
-    }
-    
-    return true;
-}
 
 ostream& operator<<(ostream& out, const Polynomial& obj)
 {
-    
+    for (int i = 0; i < obj.poly.getCurrentSize(); i++){
 
-       obj.poly.display();
-    
+        if(i >= 0 && i < ( obj.poly.getCurrentSize()-1))
+        {
+            out << obj.poly.getElement(i);
+            out << " + "; 
+        } else 
+            out << obj.poly.getElement(i);
+        }
+        
+       
     return out;
+    
+   
 }
+
+
 
 
 

@@ -28,9 +28,9 @@ public:
     
     //Operator Overloads
     Polynomial operator+(const Polynomial& other) const; //add terms
-    bool operator==(const Polynomial& other) const; //validate terms
+    //ool operator==(const Polynomial& other) const; //validate terms
     friend ostream& operator <<(ostream& out, const Polynomial& obj);
-
+   
 
 };
 #endif

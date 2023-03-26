@@ -26,17 +26,17 @@ void Term::setCoef(int aCoef)
 
 void Term::setExp(int anExp)
 {
-    this->exp = exp;
+    this->exp = anExp;
 }
 
 int Term::getCoef() const
 {
-    return coef;
+    return this->coef;
 }
 
 int Term::getExp() const
 {
-    return exp;
+    return this->exp;
 }
 
 Term& Term::operator+=(const Term& obj)
