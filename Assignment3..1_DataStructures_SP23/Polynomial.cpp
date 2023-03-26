@@ -120,10 +120,10 @@ Polynomial Polynomial::operator+(const Polynomial& obj) const
                 }
 				
             }
-        if (!hasElement) // si no se encontro un termino con la misma potencia los añadimos al final
+        if (!hasElement) 
             result.addTerm(obj.poly.getElement(i));
         }
-    return result; //retornar resultado
+    return result;
 }
 
 
